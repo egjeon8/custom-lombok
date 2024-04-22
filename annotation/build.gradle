@@ -1,0 +1,22 @@
+dependencies {
+    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc6'
+    compileOnly 'com.google.auto.service:auto-service:1.0-rc6'
+
+    // https://mvnrepository.com/artifact/com.squareup/javapoet
+    compileOnly group: 'com.squareup', name: 'javapoet', version: '1.13.0'
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+jar {
+    from {
+        configurations.compileClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}

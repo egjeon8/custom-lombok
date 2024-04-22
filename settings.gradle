@@ -1,0 +1,2 @@
+rootProject.name = 'custom-lombok'
+include 'annotation', 'client'
